@@ -4,6 +4,11 @@ public class Comment {
     String Username;
     String Comment;
 
+    public Comment(String username, String comment) {
+        Username = username;
+        Comment = comment;
+    }
+
     public String getUsername() {
         return Username;
     }
