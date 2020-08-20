@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
-    private int id;
     private String RecipeName;
     private String RecipeIngredients;
     private String RecipeMethod;

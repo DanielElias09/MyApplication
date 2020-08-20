@@ -1,7 +1,6 @@
 package com.example.myapplication.models;
 
 public class Comment {
-    private int id;
     private int recipe_id;
     String Username;
     String Comment;
@@ -10,14 +9,6 @@ public class Comment {
         this.recipe_id = recipe_id;
         Username = username;
         Comment = comment;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getRecipe_id() {
