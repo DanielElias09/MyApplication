@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
+    private int id;
     private String RecipeName;
     private String RecipeIngredients;
     private String RecipeMethod;
     private String Category;
-    private List<Comment> Comments;
 
     public Recipe(String name, String recipeIngredients, String recipeMethod, String category){
 
@@ -16,7 +16,6 @@ public class Recipe {
         RecipeIngredients = recipeIngredients;
         RecipeMethod = recipeMethod;
         Category = category;
-        Comments=new ArrayList<>();
 
     }
 
@@ -49,8 +48,4 @@ public class Recipe {
         Category = category;
     }
 
-    public void addComment(String username, String comment){
-        Comment new_commnet = new Comment(username, comment);
-        Comments.add(new_commnet);
-    }
 }
