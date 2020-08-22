@@ -11,6 +11,8 @@ import com.example.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button btn_login;
+    Button btn_signup;
     DBManager database_manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         database_manager=new DBManager(this);
 
-        Button btn_login = findViewById(R.id.main_login_button);
-        Button btn_signup = findViewById(R.id.main_signup_button);
+        btn_login = findViewById(R.id.main_login_button);
+        btn_signup = findViewById(R.id.main_signup_button);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

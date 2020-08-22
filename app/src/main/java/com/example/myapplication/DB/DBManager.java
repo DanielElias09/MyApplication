@@ -37,7 +37,8 @@ public class DBManager extends SQLiteOpenHelper {
         long res = db.insert("tbl_users", null, cv);
         if(res==-1)
             return "Failed";
-        return "Successfully inserted";
+        else
+            return "Successfully inserted";
     }
     public String addRecipe(String name, String ingredients, String method, String category){
         SQLiteDatabase db = this.getWritableDatabase();
