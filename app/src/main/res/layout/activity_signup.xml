@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create New Account"
+        android:textColor="#F60303"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -88,5 +89,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_password"
         app:layout_constraintVertical_bias="0.248" />
+
+    <TextView
+        android:id="@+id/signup_textmassage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account?"
+        android:textColor="#F60303"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_button"
+        app:layout_constraintVertical_bias="0.528" />
+
+    <Button
+        android:id="@+id/signup_login"
+        android:layout_width="115dp"
+        android:layout_height="31dp"
+        android:background="#FFFFFF"
+        android:text="click here to login"
+        android:textColor="#FFF60303"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_textmassage"
+        app:layout_constraintVertical_bias="0.159" />
 
 </android.support.constraint.ConstraintLayout>

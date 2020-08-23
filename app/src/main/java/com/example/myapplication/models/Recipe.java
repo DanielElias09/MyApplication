@@ -8,24 +8,36 @@ public class Recipe {
     private String RecipeIngredients;
     private String RecipeMethod;
     private String Category;
+    private String UserName;
 
-    public Recipe(String name, String recipeIngredients, String recipeMethod, String category){
-
-        RecipeName = name;
+    public Recipe(String recipeName, String recipeIngredients, String recipeMethod, String category, String userName) {
+        RecipeName = recipeName;
         RecipeIngredients = recipeIngredients;
         RecipeMethod = recipeMethod;
         Category = category;
+        UserName = userName;
+    }
 
+    public void setRecipeMethod(String recipeMethod) {
+        RecipeMethod = recipeMethod;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getRecipeMethod() {
+        return RecipeMethod;
+    }
+
+    public String getUserName() {
+        return UserName;
     }
 
     public  String getRecipeName(){ return RecipeName; }
 
     public String getRecipeIngredients(){
         return RecipeIngredients;
-    }
-
-    public String getRecipe(){
-        return RecipeMethod;
     }
 
     public String getCategory() { return Category; }
@@ -36,11 +48,6 @@ public class Recipe {
 
     public void setRecipeIngredients(String recipeIngredients) {
         RecipeIngredients = recipeIngredients;
-    }
-
-
-    public void setRecipe(String recipeMethod) {
-        RecipeMethod = recipeMethod;
     }
 
     public void setCategory(String category) {
