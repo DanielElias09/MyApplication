@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.DB.DBManager;
 import com.example.myapplication.R;
@@ -18,11 +19,15 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
 
+    DBManager dbManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        dbManager = new DBManager(this);
 
         login_btn=findViewById(R.id.login_button);
         signup_btn=findViewById(R.id.login_signup);
@@ -33,8 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //findUser(view);
+                boolean isExist = dbManager.checkUser(username.getText().toString(), password.getText().toString());
+                if(isExist==false)
+                {
+                    Toast.makeText(LoginActivity.this, "Login failed. Invalid username or password.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent.putExtra("username", username.getText().toString());
                 startActivity(intent);
             }
         });
