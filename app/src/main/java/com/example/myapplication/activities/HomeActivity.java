@@ -1,6 +1,7 @@
 package com.example.myapplication.activities;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,20 +10,17 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.fragments.AddRecipeFragment;
+import com.example.myapplication.fragments.MyAccountFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String username;
-    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        textView=findViewById(R.id.textViewhome);
-        username = this.getIntent().getStringExtra("username");
-        textView.setText(username);
     }
 
     @Override
@@ -34,13 +32,16 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Fragment selectedFragment = null;
         switch (item.getItemId()){
             case R.id.user_option_addrecipe:
-                return true;
+                selectedFragment = new AddRecipeFragment();
+                break;
             case R.id.user_option_myaccount:
-                return true;
-            default: return super.onOptionsItemSelected(item);
+                selectedFragment = new MyAccountFragment();
+                break;
         }
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+        return true;
     }
 }
