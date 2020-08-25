@@ -36,12 +36,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.user_option_addrecipe:
-                Intent intent1 = new Intent(HomeActivity.this, AddRecipe.class);
-                startActivity(intent1);
                 return true;
             case R.id.user_option_myaccount:
-                Intent intent2 = new Intent(HomeActivity.this, MyAccountActivity.class);
-                startActivity(intent2);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
