@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.DB.DBManager;
 import com.example.myapplication.R;
+import com.example.myapplication.adapters.DatabaseAdapter;
+import com.example.myapplication.models.User;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -19,6 +21,8 @@ public class SignupActivity extends AppCompatActivity {
     EditText password;
     Button save_btn;
     Button login_btn;
+    DatabaseAdapter databaseAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,8 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        databaseAdapter = DatabaseAdapter.getInstance(this);
 
         save_btn=findViewById(R.id.signup_button);
         login_btn=findViewById(R.id.signup_login);
@@ -52,12 +58,23 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void addUser(View view){
-        DBManager dbManager = new DBManager(this);
+
+        String _username = username.getText().toString();
+        String _fullname = fullname.getText().toString();
+        String _email = email.getText().toString();
+        String _password = password.getText().toString();
+
+        User newUser = new User(_username, _fullname, _email, _password);
+        String res = databaseAdapter.addNewUser(newUser);
+        Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+
+
+        /*DBManager dbManager = new DBManager(this);
         String res = dbManager.addUser(username.getText().toString(), fullname.getText().toString(), email.getText().toString(), password.getText().toString());
         Toast.makeText(this, res, Toast.LENGTH_LONG).show();
         username.setText("Username");
         fullname.setText("Full Name");
         email.setText("Email");
-        password.setText("Password");
+        password.setText("Password");*/
     }
 }
