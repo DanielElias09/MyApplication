@@ -4,18 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
+    private Long id;
     private String RecipeName;
     private String RecipeIngredients;
     private String RecipeMethod;
     private String Category;
     private String UserName;
+    private String ImagePath;
 
-    public Recipe(String recipeName, String recipeIngredients, String recipeMethod, String category, String userName) {
+    public Recipe(String recipeName, String recipeIngredients, String recipeMethod, String category, String userName, String imagePath) {
         RecipeName = recipeName;
         RecipeIngredients = recipeIngredients;
         RecipeMethod = recipeMethod;
         Category = category;
         UserName = userName;
+        ImagePath = imagePath;
+    }
+
+    public Recipe(Long id, String recipeName, String recipeIngredients, String recipeMethod, String category, String userName, String imagePath) {
+        this(recipeName, recipeIngredients, recipeMethod, category, userName, imagePath);
+        this.id = id;
+    }
+
+    public String getImagePath() {
+        return ImagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        ImagePath = imagePath;
     }
 
     public void setRecipeMethod(String recipeMethod) {
@@ -52,6 +68,14 @@ public class Recipe {
 
     public void setCategory(String category) {
         Category = category;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

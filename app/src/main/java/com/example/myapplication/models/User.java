@@ -1,6 +1,7 @@
 package com.example.myapplication.models;
 
 public class User {
+    private Long id;
     private String username;
     private String fullname;
     private String email;
@@ -13,8 +14,17 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String username, String fullname, String email, String password) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User(Long id, String username, String fullname, String email, String password) {
         this(username, fullname, email, password);
+        this.id = id;
     }
 
     public String getUsername() {
