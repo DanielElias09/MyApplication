@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.fragments.AddRecipeFragment;
+import com.example.myapplication.fragments.AllCategoriesFragment;
 import com.example.myapplication.fragments.MyAccountFragment;
 
 public class HomeActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.user_menu, menu);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AllCategoriesFragment()).commit();
         return true;
     }
 

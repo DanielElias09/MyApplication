@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        databaseAdapter = DatabaseAdapter.getInstance(this);
+        //databaseAdapter = DatabaseAdapter.getInstance(this);
 
         login_btn=findViewById(R.id.login_button);
         signup_btn=findViewById(R.id.login_signup);
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("username", username.getText().toString());*/
 
 
-                databaseAdapter.logIn(username.getText().toString(), password.getText().toString());
+                //databaseAdapter.logIn(username.getText().toString(), password.getText().toString());
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

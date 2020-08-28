@@ -11,9 +11,6 @@ import com.example.myapplication.DAO.RecipeDAO;
 import com.example.myapplication.DAO.UserDAO;
 
 public class DBManager extends SQLiteOpenHelper {
-    public DBManager(@Nullable Context context) {
-        super(context, "Foodly.db", null, 1);
-    }
     public DBManager(Context context, String databaseName, int databaseVersion) {
         super(context, databaseName, null, databaseVersion);
     }
@@ -21,17 +18,15 @@ public class DBManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(UserDAO.Config.CREATE_TABLE_STATEMENT);
         db.execSQL(RecipeDAO.Config.CREATE_TABLE_STATEMENT);
-        /*db.execSQL("CREATE TABLE tbl_users (id integer primary key autoincrement, username text, fullname text, email text, password text)");
-        db.execSQL("CREATE TABLE tbl_recipes (id integer primary key autoincrement, name text, ingredients text, method text, category text, username text)");
-        db.execSQL("CREATE TABLE tbl_comments (id integer primary key autoincrement, recipeId text, username text, comment text)");*/
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-       /* db.execSQL("DROP TABLE IF EXISTS tbl_users");
-        db.execSQL("DROP TABLE IF EXISTS tbl_recipes");
-        db.execSQL("DROP TABLE IF EXISTS tbl_comments");
-        onCreate(db);*/
+
+        db.execSQL("DROP TABLE IF EXISTS  "+RecipeDAO.Config.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS  "+RecipeDAO.Config.TABLE_NAME);
+        //db.execSQL("DROP TABLE IF EXISTS tbl_comments");
+        onCreate(db);
     }
 
    /* public String addUser(String username, String fullname, String email, String password){

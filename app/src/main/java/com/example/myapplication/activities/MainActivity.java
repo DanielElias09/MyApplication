@@ -13,13 +13,10 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_login;
     Button btn_signup;
-    DBManager database_manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        database_manager=new DBManager(this);
 
         btn_login = findViewById(R.id.main_login_button);
         btn_signup = findViewById(R.id.main_signup_button);
@@ -27,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
