@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //databaseAdapter = DatabaseAdapter.getInstance(this);
+        databaseAdapter = DatabaseAdapter.getInstance(this);
 
         login_btn=findViewById(R.id.login_button);
         signup_btn=findViewById(R.id.login_signup);
@@ -39,16 +39,11 @@ public class LoginActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*boolean isExist = dbManager.checkUser(username.getText().toString(), password.getText().toString());
-                if(isExist==false)
+                if(!((databaseAdapter.logIn(username.getText().toString(), password.getText().toString()))))
                 {
                     Toast.makeText(LoginActivity.this, "Login failed. Invalid username or password.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                intent.putExtra("username", username.getText().toString());*/
-
-
-                //databaseAdapter.logIn(username.getText().toString(), password.getText().toString());
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

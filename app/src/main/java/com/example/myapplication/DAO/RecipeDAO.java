@@ -79,8 +79,8 @@ public class RecipeDAO {
         public static final String KEY_RECIPE_CATEGORY = "category";
         public static final String KEY_RECIPE_INGREDIENTS = "ingredients";
         public static final String KEY_RECIPE_METHOD = "recipe method";
-        public static final String KEY_RECIPE_USERNAME = "recipe method";
-        public static final String KEY_RECIPE_IMAGE_PATH = "imagePath";
+        public static final String KEY_RECIPE_USERNAME = "username";
+        public static final String KEY_RECIPE_IMAGE_PATH = "image path";
 
         public static final String CREATE_TABLE_STATEMENT =
                 "CREATE TABLE " + TABLE_NAME + " (" +

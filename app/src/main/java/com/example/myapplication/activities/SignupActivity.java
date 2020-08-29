@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //databaseAdapter = DatabaseAdapter.getInstance(this);
+        databaseAdapter = DatabaseAdapter.getInstance(this);
 
         save_btn=findViewById(R.id.signup_button);
         login_btn=findViewById(R.id.signup_login);

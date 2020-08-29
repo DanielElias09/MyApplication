@@ -10,7 +10,11 @@ import android.support.annotation.Nullable;
 import com.example.myapplication.DAO.RecipeDAO;
 import com.example.myapplication.DAO.UserDAO;
 
+import java.io.File;
+
 public class DBManager extends SQLiteOpenHelper {
+
+
     public DBManager(Context context, String databaseName, int databaseVersion) {
         super(context, databaseName, null, databaseVersion);
     }
@@ -18,10 +22,10 @@ public class DBManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(UserDAO.Config.CREATE_TABLE_STATEMENT);
         db.execSQL(RecipeDAO.Config.CREATE_TABLE_STATEMENT);
+        //db.execSQL(CommentDAO.Config.CREATE_TABLE_STATEMENT);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
 
         db.execSQL("DROP TABLE IF EXISTS  "+RecipeDAO.Config.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS  "+RecipeDAO.Config.TABLE_NAME);
@@ -29,7 +33,7 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-   /* public String addUser(String username, String fullname, String email, String password){
+    /* public String addUser(String username, String fullname, String email, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("username", username);

@@ -13,6 +13,7 @@ import com.example.myapplication.utils.UserPreferences;
 import java.util.List;
 
 public class DatabaseAdapter {
+
     private static DatabaseAdapter instance;
     private static final String DATABASE_NAME = "Foodly.db";
     private static final int DATABASE_VERSION = 1;
@@ -47,8 +48,8 @@ public class DatabaseAdapter {
         return this;
     }
 
-    public boolean logIn(String email, String password) {
-        User currentUser = userDAO.getUserByEmailAndPassword(email, password);
+    public boolean logIn(String username, String password) {
+        User currentUser = userDAO.getUserByUsernameAndPassword(username, password);
         UserPreferences.saveCurrentUser(mContext, currentUser);
         return currentUser != null;
     }

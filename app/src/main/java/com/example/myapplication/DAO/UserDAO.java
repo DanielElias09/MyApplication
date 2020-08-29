@@ -13,6 +13,8 @@ public class UserDAO {
         this.db = db;
     }
     public String insert(User user) {
+        if(checkUsernameExist(user.getUsername()))
+            return "Username is already exist";
         ContentValues values = new ContentValues();
         values.put(Config.KEY_USERNAME, user.getUsername());
         values.put(Config.KEY_FULLNAME, user.getFullname());
@@ -29,14 +31,19 @@ public class UserDAO {
         return db.insert(Config.TABLE_NAME, null,  values);
     }
 
-    public User getUserByEmailAndPassword(String email, String password) {
+    public User getUserByUsernameAndPassword(String username, String password) {
         try (Cursor cursor = db.query(
                 Config.TABLE_NAME,
                 new String[]{Config.KEY_ID, Config.KEY_USERNAME, Config.KEY_FULLNAME, Config.KEY_EMAIL, Config.KEY_PASSWORD},
-                Config.KEY_EMAIL + "=? AND " + Config.KEY_PASSWORD + "=?",
-                new String[]{email, password}, null, null, null) ){
+                Config.KEY_USERNAME + "=? AND " + Config.KEY_PASSWORD + "=?",
+                new String[]{username, password}, null, null, null) ){
             return extractUserFromCursor(cursor);
         }
+    }
+
+    public boolean checkUsernameExist(String username){
+        //TODO
+        return false;
     }
 
     private User extractUserFromCursor(Cursor cursor) {
