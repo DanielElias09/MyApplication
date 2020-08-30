@@ -83,7 +83,6 @@ public abstract class CategoryFragment extends Fragment {
         emptyView = rootView.findViewById(R.id.empty_view);
         recipeRecyclerView.setHasFixedSize(true);
         recipeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         return rootView;
     }
 

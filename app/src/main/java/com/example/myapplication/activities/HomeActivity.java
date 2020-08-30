@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.fragments.AddRecipeFragment;
 import com.example.myapplication.fragments.AllCategoriesFragment;
 import com.example.myapplication.fragments.MyAccountFragment;
@@ -17,12 +18,16 @@ import com.example.myapplication.fragments.MyAccountFragment;
 public class HomeActivity extends AppCompatActivity {
 
 
+    private DatabaseAdapter databaseAdapter;
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        databaseAdapter = DatabaseAdapter.getInstance(this);
+        username = getIntent().getExtras().getString("username");
     }
 
     @Override
@@ -38,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         Fragment selectedFragment = null;
         switch (item.getItemId()){
             case R.id.user_option_addrecipe:
-                selectedFragment = new AddRecipeFragment();
+                selectedFragment = AddRecipeFragment.newInstance(username);
                 break;
             case R.id.user_option_myaccount:
                 selectedFragment = new MyAccountFragment();

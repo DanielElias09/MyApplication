@@ -69,12 +69,5 @@ public class SignupActivity extends AppCompatActivity {
         Toast.makeText(this, res, Toast.LENGTH_LONG).show();
 
 
-        /*DBManager dbManager = new DBManager(this);
-        String res = dbManager.addUser(username.getText().toString(), fullname.getText().toString(), email.getText().toString(), password.getText().toString());
-        Toast.makeText(this, res, Toast.LENGTH_LONG).show();
-        username.setText("Username");
-        fullname.setText("Full Name");
-        email.setText("Email");
-        password.setText("Password");*/
     }
 }

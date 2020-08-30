@@ -12,6 +12,7 @@ public class UserDAO {
     public UserDAO(SQLiteDatabase db) {
         this.db = db;
     }
+
     public String insert(User user) {
         if(checkUsernameExist(user.getUsername()))
             return "Username is already exist";

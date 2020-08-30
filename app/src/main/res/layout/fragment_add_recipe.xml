@@ -21,89 +21,94 @@
         app:layout_constraintVertical_bias="0.037" />
 
     <EditText
-        android:id="@+id/add_recipe_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Username"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:textIsSelectable="true"/>
-
-    <EditText
         android:id="@+id/add_recipe_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Recipe name"
+        android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_username"
-        android:textIsSelectable="true"/>
-
-    <EditText
-        android:id="@+id/add_recipe_categpry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Category"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_name"
-        android:textIsSelectable="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/add_recipe_ingredients"
-        android:layout_width="364dp"
-        android:layout_height="144dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="366dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="Ingredients"
+        android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_categpry"
-        android:textIsSelectable="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
 
     <EditText
         android:id="@+id/add_recipe_recipe"
-        android:layout_width="366dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="362dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="Recipe"
+        android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients"
-        android:textIsSelectable="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients" />
+
+    <EditText
+        android:id="@+id/add_recipe_imagepath"
+        android:layout_width="364dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Image path"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_recipe_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_recipe_recipe"
+        app:layout_constraintVertical_bias="0.75" />
 
     <Button
         android:id="@+id/add_recipe_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_recipe"
-        app:layout_constraintVertical_bias="0.296"
-        />
+        app:layout_constraintVertical_bias="0.326" />
+
+    <EditText
+        android:id="@+id/add_recipe_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Category"
+        android:textIsSelectable="true"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_recipe_name" />
 
 </android.support.constraint.ConstraintLayout>

@@ -8,8 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextClock;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.adapters.DatabaseAdapter;
+import com.example.myapplication.models.Recipe;
+import com.example.myapplication.models.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,14 +24,22 @@ import com.example.myapplication.R;
  */
 public class AddRecipeFragment extends Fragment implements View.OnClickListener {
 
+    private static final String ARG_USERNAME = "username";
+
     View rootView;
 
-    private EditText username;
+    private  DatabaseAdapter databaseAdapter;
+    private String username;
+
     private EditText recipe_name;
     private EditText category;
     private EditText ingredients;
     private EditText recipe;
+    private EditText imagePath;
     private Button add_btn;
+
+    private TextView username_tv;
+
     private Context context;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -48,15 +62,17 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
      */
 
     // TODO: Rename and change types and number of parameters
-    public static AddRecipeFragment newInstance() {
+    public static AddRecipeFragment newInstance(String username) {
         AddRecipeFragment fragment = new AddRecipeFragment();
         Bundle args = new Bundle();
+        args.putString(ARG_USERNAME, String.valueOf(username));
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -64,14 +80,16 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_add_recipe, container, false);
-        username = rootView.findViewById(R.id.add_recipe_username);
         recipe_name = rootView.findViewById(R.id.add_recipe_name);
-        category = rootView.findViewById(R.id.add_recipe_categpry);
+        category = rootView.findViewById(R.id.add_recipe_category);
         ingredients = rootView.findViewById(R.id.add_recipe_ingredients);
         recipe = rootView.findViewById(R.id.add_recipe_recipe);
+        imagePath = rootView.findViewById(R.id.add_recipe_imagepath);
         add_btn = rootView.findViewById(R.id.add_recipe_btn);
         add_btn.setOnClickListener(this);
         context = getActivity();
+        username = (String) this.getArguments().get(ARG_USERNAME);
+        databaseAdapter = DatabaseAdapter.getInstance(this.getActivity());
         return rootView;
     }
 
@@ -80,13 +98,15 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
     }
 
     private void addRecipe(View view) {
-        /*DBManager dbManager = new DBManager(context);
-        String res = dbManager.addRecipe(recipe_name.getText().toString(), ingredients.getText().toString(), recipe.getText().toString(), category.getText().toString(), username.getText().toString());
-        Toast.makeText(context, res, Toast.LENGTH_LONG).show();
-        username.setText("Username");
-        ingredients.setText("Ingredients");
-        category.setText("Category");
-        recipe_name.setText("Recipe name");
-        recipe.setText("Recipe");*/
+        String _recipe_name = recipe_name.getText().toString();
+        String _category = category.getText().toString();
+        String _ingredients = ingredients.getText().toString();
+        String _recipe = recipe.getText().toString();
+        String _imagePath = imagePath.getText().toString();
+
+        Recipe newRecipe = new Recipe( _recipe_name, _ingredients, _recipe, _category, this.username, _imagePath);
+        String res = databaseAdapter.addNewRecipe(newRecipe);
+        Toast.makeText(this.getActivity(), res, Toast.LENGTH_LONG).show();
+
     }
 }

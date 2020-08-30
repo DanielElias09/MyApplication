@@ -3,6 +3,7 @@ package com.example.myapplication.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.activities.HomeActivity;
+import com.example.myapplication.fragments.BlankFragment;
+import com.example.myapplication.fragments.CategoryFragment;
 import com.example.myapplication.models.Categories;
 
 import java.util.ArrayList;
@@ -20,19 +24,22 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewCategoriesAdapter extends RecyclerView.Adapter<RecyclerViewCategoriesAdapter.ViewHolder>{
 
     Categories categories;
     Context mContext;
     List<String> mImages = new ArrayList<>();
     List<String> mImageNames = new ArrayList<>();
+    HomeActivity ha;
 
-    public RecyclerViewAdapter(Categories categories, Context mContext) {
+    public RecyclerViewCategoriesAdapter(Categories categories, Context mContext, HomeActivity ha) {
         mImages = categories.getAllImages();
         mImageNames = categories.getAllNames();
         this.mContext = mContext;
+        this.ha = ha;
     }
 
+    @SuppressLint("ResourceType")
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -51,6 +58,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Fragment fragment = CategoryFragment.newInstance(mImageNames.get(position));
+                ha.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
             }
         });

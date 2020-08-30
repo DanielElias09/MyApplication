@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
-import com.example.myapplication.adapters.RecyclerViewAdapter;
+import com.example.myapplication.activities.HomeActivity;
+import com.example.myapplication.adapters.RecyclerViewCategoriesAdapter;
 import com.example.myapplication.models.Categories;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class AllCategoriesFragment extends Fragment {
@@ -34,7 +32,7 @@ public class AllCategoriesFragment extends Fragment {
         rootView =  inflater.inflate(R.layout.fragment_all_categories, container, false);
         categories = new Categories();
         rv_categories = rootView.findViewById(R.id.recyclerView_categories);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(categories, this.getContext());
+        RecyclerViewCategoriesAdapter recyclerViewAdapter = new RecyclerViewCategoriesAdapter(categories, this.getContext(), (HomeActivity) this.getActivity());
         rv_categories.setAdapter(recyclerViewAdapter);
         rv_categories.setLayoutManager(new LinearLayoutManager(this.getContext()));
         return rootView;

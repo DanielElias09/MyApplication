@@ -58,7 +58,7 @@ public class DatabaseAdapter {
         return userDAO.insert(user);
     }
 
-    public long addNewRecipe(Recipe recipe) {
+    public String addNewRecipe(Recipe recipe) {
         return recipeDAO.insert(recipe);
     }
 
