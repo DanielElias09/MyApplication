@@ -1,13 +1,12 @@
 package com.example.myapplication.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,12 +14,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.activities.HomeActivity;
-import com.example.myapplication.fragments.BlankFragment;
-import com.example.myapplication.fragments.CategoryFragment;
-import com.example.myapplication.models.Categories;
 import com.example.myapplication.models.Recipe;
 
-import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +36,12 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
         loadRecipes();
         this.ha = ha;
     }
-
+    @SuppressLint("ResourceType")
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_recipe_item, parent, false);
-        RecyclerViewRecipesAdapter.ViewHolder holder = new RecyclerViewRecipesAdapter.ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
@@ -59,20 +54,15 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         Glide.with(mContext)
                 .asBitmap()
                 .load(mImages.get(position))
                 .into(holder.image);
         holder.name.setText(mNames.get(position));
         holder.creator.setText(mCreators.get(position));
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Fragment fragment = CategoryFragment.newInstance(mImageNames.get(position));
-               // ha.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
-                //Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
-            }
+        holder.parentLayout.setOnClickListener(view -> {
+            Toast.makeText(mContext, mNames.get(position), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -83,10 +73,10 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView image;
-        public TextView name;
-        public TextView creator;
-        public RelativeLayout parentLayout;
+         CircleImageView image;
+         TextView name;
+         TextView creator;
+         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

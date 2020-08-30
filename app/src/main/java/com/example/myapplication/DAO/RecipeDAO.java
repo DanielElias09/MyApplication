@@ -78,14 +78,14 @@ public class RecipeDAO {
     }
 
     public static class Config {
-        public static final String TABLE_NAME = "tbl_recipes";
+        public static final String TABLE_NAME = "recipes";
         public static final String KEY_ID = "id";
-        public static final String KEY_RECIPE_NAME = "recipe name";
+        public static final String KEY_RECIPE_NAME = "recipeName";
         public static final String KEY_RECIPE_CATEGORY = "category";
         public static final String KEY_RECIPE_INGREDIENTS = "ingredients";
-        public static final String KEY_RECIPE_METHOD = "recipe method";
+        public static final String KEY_RECIPE_METHOD = "recipeMethod";
         public static final String KEY_RECIPE_USERNAME = "username";
-        public static final String KEY_RECIPE_IMAGE_PATH = "image path";
+        public static final String KEY_RECIPE_IMAGE_PATH = "imagePath";
 
         public static final String CREATE_TABLE_STATEMENT =
                 "CREATE TABLE " + TABLE_NAME + " (" +

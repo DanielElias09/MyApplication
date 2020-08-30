@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseAdapter {
 
     private static DatabaseAdapter instance;
-    private static final String DATABASE_NAME = "Foodly.db";
+    private static final String DATABASE_NAME = "MyDB.db";
     private static final int DATABASE_VERSION = 1;
 
     private DBManager dbManager;

@@ -8,11 +8,13 @@ import android.widget.Button;
 
 import com.example.myapplication.DB.DBManager;
 import com.example.myapplication.R;
+import com.example.myapplication.adapters.DatabaseAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_login;
     Button btn_signup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn_login = findViewById(R.id.main_login_button);
         btn_signup = findViewById(R.id.main_signup_button);
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

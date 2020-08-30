@@ -62,7 +62,7 @@ public class UserDAO {
     }
 
     public static class Config {
-        public static final String TABLE_NAME = "tbl_users";
+        public static final String TABLE_NAME = "users";
         public static final String KEY_ID = "id";
         public static final String KEY_USERNAME = "username";
         public static final String KEY_FULLNAME = "fullname";

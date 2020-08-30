@@ -80,11 +80,13 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_add_recipe, container, false);
+
         recipe_name = rootView.findViewById(R.id.add_recipe_name);
         category = rootView.findViewById(R.id.add_recipe_category);
         ingredients = rootView.findViewById(R.id.add_recipe_ingredients);
         recipe = rootView.findViewById(R.id.add_recipe_recipe);
         imagePath = rootView.findViewById(R.id.add_recipe_imagepath);
+
         add_btn = rootView.findViewById(R.id.add_recipe_btn);
         add_btn.setOnClickListener(this);
         context = getActivity();
@@ -107,6 +109,12 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
         Recipe newRecipe = new Recipe( _recipe_name, _ingredients, _recipe, _category, this.username, _imagePath);
         String res = databaseAdapter.addNewRecipe(newRecipe);
         Toast.makeText(this.getActivity(), res, Toast.LENGTH_LONG).show();
+
+        recipe_name.setText("Recipe Name");
+        category.setText("Category");
+        ingredients.setText("Ingredients");
+        recipe.setText("Recipe");
+        imagePath.setText("Image path");
 
     }
 }

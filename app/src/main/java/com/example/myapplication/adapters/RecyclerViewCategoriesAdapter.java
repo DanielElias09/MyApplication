@@ -15,8 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.activities.HomeActivity;
-import com.example.myapplication.fragments.BlankFragment;
-import com.example.myapplication.fragments.CategoryFragment;
+import com.example.myapplication.fragments.RecipesByCategoryFragment;
 import com.example.myapplication.models.Categories;
 
 import java.util.ArrayList;
@@ -58,8 +57,8 @@ public class RecyclerViewCategoriesAdapter extends RecyclerView.Adapter<Recycler
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = CategoryFragment.newInstance(mImageNames.get(position));
-                ha.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                Fragment fragment = RecipesByCategoryFragment.newInstance(mImageNames.get(position));
+                ha.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                 Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
             }
         });

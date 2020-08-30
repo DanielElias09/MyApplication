@@ -31,6 +31,7 @@ public class AllCategoriesFragment extends Fragment {
 
         rootView =  inflater.inflate(R.layout.fragment_all_categories, container, false);
         categories = new Categories();
+
         rv_categories = rootView.findViewById(R.id.recyclerView_categories);
         RecyclerViewCategoriesAdapter recyclerViewAdapter = new RecyclerViewCategoriesAdapter(categories, this.getContext(), (HomeActivity) this.getActivity());
         rv_categories.setAdapter(recyclerViewAdapter);
