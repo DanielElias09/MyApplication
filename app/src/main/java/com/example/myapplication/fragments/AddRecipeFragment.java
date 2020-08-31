@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
     private String username;
 
     private EditText recipe_name;
-    private EditText category;
+    private Spinner category;
     private EditText ingredients;
     private EditText recipe;
     private EditText imagePath;
@@ -101,17 +102,22 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
 
     private void addRecipe(View view) {
         String _recipe_name = recipe_name.getText().toString();
-        String _category = category.getText().toString();
+        String _category = category.getSelectedItem().toString();
         String _ingredients = ingredients.getText().toString();
         String _recipe = recipe.getText().toString();
         String _imagePath = imagePath.getText().toString();
+
+        if(_category.equals("Select Category"))
+        {
+            Toast.makeText(getActivity(), "Failed. Select Category", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         Recipe newRecipe = new Recipe( _recipe_name, _ingredients, _recipe, _category, this.username, _imagePath);
         String res = databaseAdapter.addNewRecipe(newRecipe);
         Toast.makeText(this.getActivity(), res, Toast.LENGTH_LONG).show();
 
         recipe_name.setText("Recipe Name");
-        category.setText("Category");
         ingredients.setText("Ingredients");
         recipe.setText("Recipe");
         imagePath.setText("Image path");

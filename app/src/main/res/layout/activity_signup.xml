@@ -26,8 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Username"
         android:inputType="textPersonName"
-        android:text="Username"
         app:layout_constraintBottom_toTopOf="@+id/signup_fullname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
@@ -40,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Full Name"
         android:inputType="textPersonName"
-        android:text="Full Name"
         app:layout_constraintBottom_toTopOf="@+id/signup_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
@@ -54,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:text="Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
@@ -69,16 +69,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-        android:text="Email"
         app:layout_constraintBottom_toTopOf="@+id/signup_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_newaccount"
-        app:layout_constraintVertical_bias="0.603"
 
-        />
+        app:layout_constraintVertical_bias="0.603" />
 
     <Button
         android:id="@+id/signup_button"
