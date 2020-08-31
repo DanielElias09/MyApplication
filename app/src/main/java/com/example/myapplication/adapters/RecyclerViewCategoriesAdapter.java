@@ -59,7 +59,6 @@ public class RecyclerViewCategoriesAdapter extends RecyclerView.Adapter<Recycler
             public void onClick(View view) {
                 Fragment fragment = RecipesByCategoryFragment.newInstance(mImageNames.get(position));
                 ha.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -62,6 +62,8 @@ public class DatabaseAdapter {
         return recipeDAO.insert(recipe);
     }
 
+    public Recipe getRecipeById(Long id){return recipeDAO.getById(id);}
+
     public void updateRecipe(Recipe recipe) {
         recipeDAO.update(recipe);
     }

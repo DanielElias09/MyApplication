@@ -8,19 +8,19 @@
         android:id="@+id/item_recipe_image"
         android:layout_width="150dp"
         android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher">
-
-    </de.hdodenhof.circleimageview.CircleImageView>
+        android:src="@mipmap/ic_launcher"></de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
-        android:id="@+id/item_recipe_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:text="Name"
+        android:id="@+id/item_recipe_text"
         android:layout_toRightOf="@+id/item_recipe_image"
-        android:text="Recipe name"
         android:textColor="#000"
-        android:textSize="30sp">
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:textSize="30sp"
+        >
 
     </TextView>
 
@@ -28,11 +28,10 @@
         android:id="@+id/item_recipe_creator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/item_recipe_image"
         android:text="Creator"
-        android:textColor="#60000000"
+        android:textColor="#63000000"
         android:textSize="20sp">
 
     </TextView>

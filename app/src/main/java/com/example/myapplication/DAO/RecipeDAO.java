@@ -77,6 +77,26 @@ public class RecipeDAO {
         return db.delete(Config.TABLE_NAME, Config.KEY_ID + "=" + id, null) > 0;
     }
 
+    public Recipe getById(long id) {
+        Cursor cursor = db.rawQuery("select * from " + Config.TABLE_NAME +" where "+Config.KEY_ID+" = "+id, null);
+        return extractRecipeFromCursor(cursor);
+
+    }
+    private Recipe extractRecipeFromCursor(Cursor cursor) {
+        if (cursor.moveToFirst()) {
+            return new Recipe(
+                    cursor.getLong(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6)
+            );
+        }
+        return null;
+    }
+
     public static class Config {
         public static final String TABLE_NAME = "recipes";
         public static final String KEY_ID = "id";
