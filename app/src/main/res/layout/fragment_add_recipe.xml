@@ -11,8 +11,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
         android:text="add recipe"
-        android:textColor="#FF0000"
+        android:textColor="#D361E6"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,13 +26,14 @@
         android:id="@+id/add_recipe_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Recipe name"
         android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -38,7 +41,7 @@
         android:id="@+id/add_recipe_ingredients"
         android:layout_width="366dp"
         android:layout_height="121dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -46,7 +49,7 @@
         android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
 
@@ -54,7 +57,7 @@
         android:id="@+id/add_recipe_recipe"
         android:layout_width="362dp"
         android:layout_height="136dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -62,7 +65,7 @@
         android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients" />
 
@@ -71,7 +74,7 @@
         android:layout_width="364dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Image path"
@@ -79,23 +82,23 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/add_recipe_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_recipe"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <Button
         android:id="@+id/add_recipe_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
+        android:background="#F6EB8D"
+        android:fontFamily="sans-serif-black"
         android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_recipe"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintTop_toBottomOf="@+id/add_recipe_imagepath" />
 
     <EditText
         android:id="@+id/add_recipe_category"
@@ -108,6 +111,7 @@
         android:textIsSelectable="true"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_name" />
 

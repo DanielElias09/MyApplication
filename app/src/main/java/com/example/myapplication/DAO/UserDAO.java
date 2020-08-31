@@ -61,6 +61,19 @@ public class UserDAO {
         return null;
     }
 
+    public User getUserByUsername(String username) {
+        //Cursor cursor = db.rawQuery("select * from " + UserDAO.Config.TABLE_NAME +" where "+ RecipeDAO.Config.KEY_RECIPE_USERNAME+" = "+username, null);
+        //return extractUserFromCursor(cursor);
+
+        try (Cursor cursor = db.query(
+                Config.TABLE_NAME,
+                new String[]{Config.KEY_ID, Config.KEY_USERNAME, Config.KEY_FULLNAME, Config.KEY_EMAIL, Config.KEY_PASSWORD},
+                Config.KEY_USERNAME + "=?",
+                new String[]{username}, null, null, null) ){
+            return extractUserFromCursor(cursor);
+        }
+    }
+
     public static class Config {
         public static final String TABLE_NAME = "users";
         public static final String KEY_ID = "id";

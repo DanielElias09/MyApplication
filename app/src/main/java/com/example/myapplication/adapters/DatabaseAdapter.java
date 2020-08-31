@@ -76,4 +76,11 @@ public class DatabaseAdapter {
         return recipeDAO.selectAllByCategory(category);
     }
 
+    public User getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
+    }
+
+    public List<Recipe> getAllRecipesByUsername(String username) {
+        return recipeDAO.selectAllByUsername(username);
+    }
 }

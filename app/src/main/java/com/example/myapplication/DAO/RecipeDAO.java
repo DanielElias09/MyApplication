@@ -97,6 +97,31 @@ public class RecipeDAO {
         return null;
     }
 
+    public List<Recipe> selectAllByUsername(String username) {
+        List<Recipe> recipes = new ArrayList<>();
+        try (Cursor cursor = db.query(Config.TABLE_NAME,
+                new String[]{Config.KEY_ID, Config.KEY_RECIPE_NAME, Config.KEY_RECIPE_INGREDIENTS, Config.KEY_RECIPE_METHOD, Config.KEY_RECIPE_CATEGORY,  Config.KEY_RECIPE_USERNAME, Config.KEY_RECIPE_IMAGE_PATH},
+                Config.KEY_RECIPE_USERNAME + " = ?",
+                new String[]{username}, null, null, null))
+        {
+            if (cursor.moveToFirst()) {
+                do {
+                    Recipe recipe = new Recipe(
+                            cursor.getLong(0),
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5),
+                            cursor.getString(6));
+                    recipes.add(recipe);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        return recipes;
+    }
+
     public static class Config {
         public static final String TABLE_NAME = "recipes";
         public static final String KEY_ID = "id";

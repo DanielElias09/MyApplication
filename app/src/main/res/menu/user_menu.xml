@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/user_option_back"
+        android:title="back"
+        android:icon="@drawable/ic_baseline_back_24"
+        app:showAsAction="ifRoom">
 
-    <item
-        android:id="@+id/user_option_myaccount"
-        android:icon="@drawable/ic_user"
-        android:title="my account"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/user_option_addrecipe"
-        android:icon="@drawable/ic_add_recipe"
-        android:title="add recipe"
-        app:showAsAction="ifRoom"/>
-
-
+    </item>
 </menu>

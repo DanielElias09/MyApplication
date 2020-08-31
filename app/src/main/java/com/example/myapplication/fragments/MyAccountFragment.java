@@ -2,11 +2,21 @@ package com.example.myapplication.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.HomeActivity;
+import com.example.myapplication.adapters.DatabaseAdapter;
+import com.example.myapplication.adapters.RecyclerViewRecipesAdapter;
+import com.example.myapplication.models.Recipe;
+import com.example.myapplication.models.User;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,14 +25,20 @@ import com.example.myapplication.R;
  */
 public class MyAccountFragment extends Fragment {
 
+    private View rootView;
+    private DatabaseAdapter databaseAdapter;
+    private TextView fullname_tv;
+    private TextView username_tv;
+    private TextView email_tv;
+    private RecyclerView recipes_rv;
     public MyAccountFragment() {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static MyAccountFragment newInstance() {
+    public static MyAccountFragment newInstance(String username) {
         MyAccountFragment fragment = new MyAccountFragment();
         Bundle args = new Bundle();
-
+        args.putString("username", username);
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,6 +51,25 @@ public class MyAccountFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_account, container, false);
+        rootView = inflater.inflate(R.layout.fragment_my_account, container, false);
+        databaseAdapter = DatabaseAdapter.getInstance(this.getContext());
+        String username = getArguments().getString("username");
+        User user = databaseAdapter.getUserByUsername(getArguments().getString("username"));
+        List<Recipe> recipes = databaseAdapter.getAllRecipesByUsername(user.getUsername());
+
+        fullname_tv = rootView.findViewById(R.id.my_account_fullname);
+        username_tv = rootView.findViewById(R.id.my_account_username);
+        email_tv = rootView.findViewById(R.id.my_account_email);
+        recipes_rv = rootView.findViewById(R.id.my_accounts_recipes);
+
+        fullname_tv.setText(user.getFullname());
+        username_tv.setText(user.getUsername());
+        email_tv.setText(user.getEmail());
+
+        RecyclerViewRecipesAdapter recyclerViewAdapter = new RecyclerViewRecipesAdapter(recipes, this.getContext(), (HomeActivity) this.getActivity());
+        recipes_rv.setAdapter(recyclerViewAdapter);
+        recipes_rv.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        return rootView;
     }
 }

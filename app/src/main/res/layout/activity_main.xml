@@ -4,40 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    android:background="@drawable/background"
+    tools:context=".activities.MainActivity"
+    >
 
     <Button
         android:id="@+id/main_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#F6EB8D"
+        android:fontFamily="sans-serif-black"
         android:text="Log in"
+        android:textColorHint="#8C4E4E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376" />
+        app:layout_constraintVertical_bias="0.437" />
 
     <Button
         android:id="@+id/main_signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#F6EB8D"
+        android:fontFamily="sans-serif-black"
         android:text="Sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.795"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_login_button"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437" />
 
     <TextView
         android:id="@+id/main_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textColor="#FD0808"
+        android:fontFamily="sans-serif-black"
+        android:text="FOODLY!"
+        android:textColor="#D361E6"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/main_login_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.755" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/main_welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921"
+        tools:text="welcome" />
 </android.support.constraint.ConstraintLayout>

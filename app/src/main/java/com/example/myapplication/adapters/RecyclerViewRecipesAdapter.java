@@ -31,7 +31,7 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
     Context mContext;
     List<String> mImages = new ArrayList<>();
     List<String> mImageNames = new ArrayList<>();
-    List<String> mCreators = new ArrayList<>();
+    //List<String> mCreators = new ArrayList<>();
     List<Long> mIds = new ArrayList<>();
     HomeActivity ha;
 
@@ -46,7 +46,7 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
         for(int i=0; i<recipes.size(); i++){
             mImages.add(recipes.get(i).getImagePath());
             mImageNames.add(recipes.get(i).getRecipeName());
-            mCreators.add(recipes.get(i).getUserName());
+            //mCreators.add(recipes.get(i).getUserName());
             mIds.add(recipes.get(i).getId());
         }
     }
@@ -67,11 +67,11 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
                 .load(mImages.get(position))
                 .into(holder.image);
         holder.name.setText(mImageNames.get(position));
-        holder.creator.setText(mCreators.get(position));
+        //holder.creator.setText(mCreators.get(position));
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = RecipeFragment.newInstance(mIds.get(position));
+                Fragment fragment = RecipeFragment.newInstance(mIds.get(position), ha.getIntent().getExtras().getString("username"));
                 ha.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
             }
         });
@@ -86,14 +86,14 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
 
         CircleImageView image;
         TextView name;
-        TextView creator;
+        //TextView creator;
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.item_recipe_image);
             name = itemView.findViewById(R.id.item_recipe_text);
-            creator = itemView.findViewById(R.id.item_recipe_creator);
+            //creator = itemView.findViewById(R.id.item_recipe_creator);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }

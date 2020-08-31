@@ -24,17 +24,5 @@
 
     </TextView>
 
-    <TextView
-        android:id="@+id/item_recipe_creator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/item_recipe_image"
-        android:text="Creator"
-        android:textColor="#63000000"
-        android:textSize="20sp">
-
-    </TextView>
-
 
 </RelativeLayout>

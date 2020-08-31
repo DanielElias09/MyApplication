@@ -28,11 +28,13 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         databaseAdapter = DatabaseAdapter.getInstance(this);
         username = getIntent().getExtras().getString("username");
+        this.getIntent().putExtra("username", username);
         bottom_nav = findViewById(R.id.home_bottom_nav);
         bottom_nav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, AllCategoriesFragment.newInstance()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
                     selectedFragment = AddRecipeFragment.newInstance(username);
                     break;
                 case R.id.nav_my_account:
-                    selectedFragment = MyAccountFragment.newInstance();
+                    selectedFragment = MyAccountFragment.newInstance(username);
                     break;
                 case R.id.nav_home:
                     selectedFragment = AllCategoriesFragment.newInstance();
@@ -67,14 +69,11 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Fragment selectedFragment = null;
         switch (item.getItemId()){
-            case R.id.user_option_addrecipe:
-                selectedFragment = AddRecipeFragment.newInstance(username);
-                break;
-            case R.id.user_option_myaccount:
-                selectedFragment = new MyAccountFragment();
+            case R.id.user_option_back:
+                //getSupportFragmentManager().popBackStack();
                 break;
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         return true;
     }
 }
