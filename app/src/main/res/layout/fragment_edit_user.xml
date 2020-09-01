@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.EditRecipeFragment"
@@ -129,6 +129,6 @@
 
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

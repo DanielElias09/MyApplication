@@ -1,9 +1,10 @@
 package com.example.myapplication.DAO;
 
-import android.arch.persistence.room.Dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import androidx.room.Dao;
 
 import com.example.myapplication.models.User;
 

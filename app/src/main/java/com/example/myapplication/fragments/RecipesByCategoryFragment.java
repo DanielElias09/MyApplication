@@ -1,19 +1,18 @@
 package com.example.myapplication.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.R;
 import com.example.myapplication.activities.HomeActivity;
 import com.example.myapplication.adapters.DatabaseAdapter;
-import com.example.myapplication.adapters.RecyclerViewCategoriesAdapter;
 import com.example.myapplication.adapters.RecyclerViewRecipesAdapter;
-import com.example.myapplication.models.Categories;
 import com.example.myapplication.models.Recipe;
 
 import java.util.List;

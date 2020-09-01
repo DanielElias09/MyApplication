@@ -1,19 +1,22 @@
 package com.example.myapplication.activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.fragments.AddRecipeFragment;
 import com.example.myapplication.fragments.AllCategoriesFragment;
 import com.example.myapplication.fragments.MyAccountFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+
 
 public class HomeActivity extends AppCompatActivity {
 
