@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
@@ -31,6 +32,7 @@ public class MyAccountFragment extends Fragment {
     private TextView username_tv;
     private TextView email_tv;
     private RecyclerView recipes_rv;
+    private Button edit_btn;
     public MyAccountFragment() {
     }
 
@@ -56,6 +58,13 @@ public class MyAccountFragment extends Fragment {
         String username = getArguments().getString("username");
         User user = databaseAdapter.getUserByUsername(getArguments().getString("username"));
         List<Recipe> recipes = databaseAdapter.getAllRecipesByUsername(user.getUsername());
+
+        edit_btn = rootView.findViewById(R.id.my_account_edit_btn);
+
+        edit_btn.setOnClickListener(view -> {
+            Fragment fragment = EditUserFragment.newInstance(username);
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        });
 
         fullname_tv = rootView.findViewById(R.id.my_account_fullname);
         username_tv = rootView.findViewById(R.id.my_account_username);

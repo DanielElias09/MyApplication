@@ -83,4 +83,8 @@ public class DatabaseAdapter {
     public List<Recipe> getAllRecipesByUsername(String username) {
         return recipeDAO.selectAllByUsername(username);
     }
+
+    public String updateUser(User user, String username) {
+        return userDAO.update(user, username);
+    }
 }

@@ -74,6 +74,21 @@ public class UserDAO {
         }
     }
 
+    public String update(User user, String username) {
+
+        if(checkUsernameExist(user.getUsername()) && !(user.getUsername().equals(username)))
+            return "Username is already exist";
+
+        ContentValues values = new ContentValues();
+        values.put(Config.KEY_USERNAME, user.getUsername());
+        values.put(Config.KEY_FULLNAME, user.getFullname());
+        values.put(Config.KEY_EMAIL, user.getEmail());
+        values.put(Config.KEY_PASSWORD, user.getPassword());
+
+        db.update(UserDAO.Config.TABLE_NAME, values, UserDAO.Config.KEY_ID + "=" + user.getId(), null);
+        return "Successfully updated";
+    }
+
     public static class Config {
         public static final String TABLE_NAME = "users";
         public static final String KEY_ID = "id";
