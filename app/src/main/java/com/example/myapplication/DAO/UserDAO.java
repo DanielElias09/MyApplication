@@ -1,11 +1,13 @@
 package com.example.myapplication.DAO;
 
+import android.arch.persistence.room.Dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.myapplication.models.User;
 
+@Dao
 public class UserDAO {
     SQLiteDatabase db;
 

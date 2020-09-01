@@ -1,9 +1,13 @@
 package com.example.myapplication.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
+@Entity
 public class Recipe {
+    @PrimaryKey
+    @NonNull
     private Long id;
     private String RecipeName;
     private String RecipeIngredients;

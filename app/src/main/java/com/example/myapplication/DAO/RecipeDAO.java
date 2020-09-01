@@ -1,15 +1,15 @@
 package com.example.myapplication.DAO;
 
+import android.arch.persistence.room.Dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.myapplication.models.Recipe;
-import com.example.myapplication.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Dao
 public class RecipeDAO {
     
     SQLiteDatabase db;
