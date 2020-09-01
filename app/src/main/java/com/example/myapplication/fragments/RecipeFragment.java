@@ -81,6 +81,11 @@ public class RecipeFragment extends Fragment {
         if(recipe.getUserName().equals(current_username))
             edit_btn.setVisibility(View.VISIBLE);
 
+        edit_btn.setOnClickListener(view -> {
+            Fragment fragment = EditRecipeFragment.newInstance(recipe.getId());
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        });
+
         Glide.with(this.getContext())
                 .asBitmap()
                 .load(recipe.getImagePath())

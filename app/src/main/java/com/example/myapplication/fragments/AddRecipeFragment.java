@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.Recipe;
-import com.example.myapplication.models.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,13 +80,13 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_add_recipe, container, false);
 
-        recipe_name = rootView.findViewById(R.id.add_recipe_name);
-        category = rootView.findViewById(R.id.add_recipe_category);
-        ingredients = rootView.findViewById(R.id.add_recipe_ingredients);
-        recipe = rootView.findViewById(R.id.add_recipe_recipe);
-        imagePath = rootView.findViewById(R.id.add_recipe_imagepath);
+        recipe_name = rootView.findViewById(R.id.edit_recipe_name);
+        category = rootView.findViewById(R.id.edit_recipe_category);
+        ingredients = rootView.findViewById(R.id.edit_recipe_ingredients);
+        recipe = rootView.findViewById(R.id.edit_recipe_recipe);
+        imagePath = rootView.findViewById(R.id.edit_recipe_imagepath);
 
-        add_btn = rootView.findViewById(R.id.add_recipe_btn);
+        add_btn = rootView.findViewById(R.id.edit_recipe_btn);
         add_btn.setOnClickListener(this);
         context = getActivity();
         username = (String) this.getArguments().get(ARG_USERNAME);
@@ -121,6 +119,6 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
         ingredients.setText("Ingredients");
         recipe.setText("Recipe");
         imagePath.setText("Image path");
-
+        category.setSelection(0);
     }
 }

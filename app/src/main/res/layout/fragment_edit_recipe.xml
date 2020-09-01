@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddRecipeFragment">
+    android:fillViewport="true">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.EditRecipeFragment"
+        >
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Add Recipe"
+        android:text="Edit Recipe"
         android:textColor="#D361E6"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,10 +118,11 @@
         android:layout_marginTop="12dp"
         android:background="#F6EB8D"
         android:fontFamily="sans-serif-black"
-        android:text="Add"
+        android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_recipe_imagepath" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
