@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
@@ -43,6 +44,7 @@ public class RecipeFragment extends Fragment {
     private TextView recipe_ingredients;
     private TextView recipe_method;
     private Button edit_btn;
+    private Button delete_btn;
 
     public RecipeFragment() {
     }
@@ -76,13 +78,24 @@ public class RecipeFragment extends Fragment {
         recipe_ingredients = rootView.findViewById((R.id.recipe_view_ingredients));
         recipe_method = rootView.findViewById(R.id.recipe_view_method);
         edit_btn = rootView.findViewById(R.id.recipe_edit_btn);
+        delete_btn = rootView.findViewById(R.id.recipe_delete_btn);
 
         edit_btn.setVisibility(View.INVISIBLE);
         if(recipe.getUserName().equals(current_username))
             edit_btn.setVisibility(View.VISIBLE);
 
+        delete_btn.setVisibility(View.INVISIBLE);
+        if(recipe.getUserName().equals(current_username))
+            delete_btn.setVisibility(View.VISIBLE);
+
         edit_btn.setOnClickListener(view -> {
             Fragment fragment = EditRecipeFragment.newInstance(recipe.getId());
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        });
+        delete_btn.setOnClickListener(view -> {
+            databaseAdapter.deleteRecipe(recipe.getId());
+            Toast.makeText(getActivity(), "Recipe deleted", Toast.LENGTH_LONG).show();
+            Fragment fragment = AllCategoriesFragment.newInstance();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         });
 
@@ -97,4 +110,7 @@ public class RecipeFragment extends Fragment {
 
         return rootView;
     }
+
+
+
 }
