@@ -19,7 +19,7 @@ public class RecipeDAO {
         this.db = db;
     }
 
-    public String insert(Recipe recipe) {
+    public Long insert(Recipe recipe) {
         ContentValues values = new ContentValues();
         values.put(Config.KEY_RECIPE_NAME, recipe.getRecipeName());
         values.put(Config.KEY_RECIPE_INGREDIENTS, recipe.getRecipeIngredients());
@@ -27,10 +27,7 @@ public class RecipeDAO {
         values.put(Config.KEY_RECIPE_CATEGORY, recipe.getCategory());
         values.put(Config.KEY_RECIPE_USERNAME, recipe.getUserName());
         values.put(Config.KEY_RECIPE_IMAGE_PATH, recipe.getImagePath());
-        Long res = insert(values);
-        if(res == -1)
-            return "Failed";
-        return "Successfully inserted";
+         return insert(values);
     }
 
     private long insert(ContentValues values) {

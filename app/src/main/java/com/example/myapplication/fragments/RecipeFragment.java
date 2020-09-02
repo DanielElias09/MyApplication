@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.Recipe;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,7 +26,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class RecipeFragment extends Fragment {
 
-
+    private FirebaseDatabase database;
+    private DatabaseReference reff;
     private View rootView;
     private DatabaseAdapter databaseAdapter;
     private Recipe recipe;
@@ -60,6 +63,7 @@ public class RecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView =  inflater.inflate(R.layout.fragment_recipe, container, false);
         databaseAdapter = DatabaseAdapter.getInstance(this.getContext());
+        database = FirebaseDatabase.getInstance();
         id = getArguments().getLong("id");
         current_username = getArguments().getString("username");
 
@@ -87,6 +91,8 @@ public class RecipeFragment extends Fragment {
         });
         delete_btn.setOnClickListener(view -> {
             databaseAdapter.deleteRecipe(recipe.getId());
+            reff = database.getReference("recipes/recipe"+recipe.getId());
+            reff.removeValue();
             Toast.makeText(getActivity(), "Recipe deleted", Toast.LENGTH_LONG).show();
             Fragment fragment = AllCategoriesFragment.newInstance();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();

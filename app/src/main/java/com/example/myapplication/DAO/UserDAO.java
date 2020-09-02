@@ -46,7 +46,8 @@ public class UserDAO {
     }
 
     public boolean checkUsernameExist(String username){
-        //TODO
+        if(getUserByUsername(username)!=null)
+            return true;
         return false;
     }
 

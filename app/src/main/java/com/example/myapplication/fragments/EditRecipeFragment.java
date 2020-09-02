@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.Recipe;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +29,8 @@ public class EditRecipeFragment extends Fragment {
     private Long id_recipe;
     private View rootView;
     DatabaseAdapter databaseAdapter;
-
+    private FirebaseDatabase database;
+    private DatabaseReference reff;
     private EditText recipe_name;
     private Spinner recipe_category;
     private EditText recipe_ingredients;
@@ -55,6 +59,7 @@ public class EditRecipeFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_edit_recipe, container, false);
         id_recipe = getArguments().getLong("id");
         databaseAdapter = DatabaseAdapter.getInstance(getContext());
+        database = FirebaseDatabase.getInstance();
         Recipe recipe = databaseAdapter.getRecipeById(id_recipe);
 
         recipe_image = rootView.findViewById(R.id.edit_recipe_imagepath);
@@ -83,6 +88,10 @@ public class EditRecipeFragment extends Fragment {
             recipe.setRecipeMethod(recipe_method.getText().toString());
             databaseAdapter.updateRecipe(recipe);
             Toast.makeText(getActivity(), "Recipe updated", Toast.LENGTH_LONG).show();
+
+            reff = database.getReference("recipes/recipe"+recipe.getId());
+            reff.setValue(recipe);
+
         });
 
         return rootView;

@@ -13,17 +13,20 @@ import com.example.myapplication.DB.DBManager;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText username;
-    EditText fullname;
-    EditText email;
-    EditText password;
-    Button save_btn;
-    Button login_btn;
-    DatabaseAdapter databaseAdapter;
-
+    private EditText username;
+    private EditText fullname;
+    private EditText email;
+    private EditText password;
+    private Button save_btn;
+    private Button login_btn;
+    private DatabaseAdapter databaseAdapter;
+    private FirebaseDatabase database;
+    private DatabaseReference reff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseAdapter = DatabaseAdapter.getInstance(this);
+        databaseAdapter = DatabaseAdapter.getInstance(this);
+        database = FirebaseDatabase.getInstance();
 
         save_btn=findViewById(R.id.signup_button);
         login_btn=findViewById(R.id.signup_login);
@@ -68,7 +73,8 @@ public class SignupActivity extends AppCompatActivity {
         User newUser = new User(_username, _fullname, _email, _password);
         String res = databaseAdapter.addNewUser(newUser);
         Toast.makeText(this, res, Toast.LENGTH_LONG).show();
-
+        reff = database.getReference("users/user"+newUser.getUsername());
+        reff.setValue(newUser);
 
     }
 }

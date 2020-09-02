@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class EditUserFragment extends Fragment {
@@ -25,6 +27,8 @@ public class EditUserFragment extends Fragment {
 
     private Button save_details_btn;
     private Button save_password_btn;
+    private FirebaseDatabase database;
+    private DatabaseReference reff;
 
     private EditText new_password;
     private EditText new_username;
@@ -53,6 +57,7 @@ public class EditUserFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_edit_user, container, false);
         username = getArguments().getString("username");
         databaseAdapter = DatabaseAdapter.getInstance(getContext());
+        database = FirebaseDatabase.getInstance();
 
         User user = databaseAdapter.getUserByUsername(username);
 
@@ -68,10 +73,18 @@ public class EditUserFragment extends Fragment {
         new_email.setText(user.getEmail());
 
         save_password_btn.setOnClickListener(view -> {
+            if(new_password.getText().toString().equals(""))
+            {
+                Toast.makeText(getActivity(), "Failed. Empty password", Toast.LENGTH_LONG).show();
+                return;
+            }
             user.setPassword(new_password.getText().toString());
             String res = databaseAdapter.updateUser(user, username);
             Toast.makeText(getActivity(), res, Toast.LENGTH_LONG).show();
             new_password.setText("");
+
+            reff = database.getReference("users/user"+user.getUsername());
+            reff.setValue(user);
         });
 
         save_details_btn.setOnClickListener(view -> {
@@ -84,6 +97,9 @@ public class EditUserFragment extends Fragment {
             new_username.setText(user2.getUsername());
             new_fullname.setText(user2.getFullname());
             new_email.setText(user2.getEmail());
+
+            reff = database.getReference("users/user"+user.getUsername());
+            reff.setValue(user);
         });
 
         return rootView;

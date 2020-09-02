@@ -83,4 +83,16 @@ public class Recipe {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", RecipeName='" + RecipeName + '\'' +
+                ", RecipeIngredients='" + RecipeIngredients + '\'' +
+                ", RecipeMethod='" + RecipeMethod + '\'' +
+                ", Category='" + Category + '\'' +
+                ", UserName='" + UserName + '\'' +
+                ", ImagePath='" + ImagePath + '\'' +
+                '}';
+    }
 }

@@ -16,6 +16,9 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.Recipe;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +31,8 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
 
     View rootView;
 
+    private FirebaseDatabase database;
+    private DatabaseReference reff;
     private  DatabaseAdapter databaseAdapter;
     private String username;
 
@@ -92,6 +97,7 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
         context = getActivity();
         username = (String) this.getArguments().get(ARG_USERNAME);
         databaseAdapter = DatabaseAdapter.getInstance(this.getActivity());
+        database = FirebaseDatabase.getInstance();
         return rootView;
     }
 
@@ -113,13 +119,17 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
         }
 
         Recipe newRecipe = new Recipe( _recipe_name, _ingredients, _recipe, _category, this.username, _imagePath);
-        String res = databaseAdapter.addNewRecipe(newRecipe);
-        Toast.makeText(this.getActivity(), res, Toast.LENGTH_LONG).show();
-
-        recipe_name.setText("Recipe Name");
-        ingredients.setText("Ingredients");
-        recipe.setText("Recipe");
-        imagePath.setText("Image path");
+        Long res = databaseAdapter.addNewRecipe(newRecipe);
+        if(res == -1)
+            Toast.makeText(this.getActivity(), "Failed", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this.getActivity(), "Successfully inserted", Toast.LENGTH_LONG).show();
+        reff = database.getReference("recipes/recipe"+res);
+        reff.setValue(newRecipe);
         category.setSelection(0);
+        recipe_name.setText("");
+        ingredients.setText("");
+        recipe.setText("");
+        imagePath.setText("");
     }
 }

@@ -70,9 +70,9 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Fragment selectedFragment = null;
         switch (item.getItemId()){
-            case R.id.user_option_back:
+            //case R.id.user_option_back:
                 //getSupportFragmentManager().popBackStack();
-                break;
+                //break;
         }
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         return true;
