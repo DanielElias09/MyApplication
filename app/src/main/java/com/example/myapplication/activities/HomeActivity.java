@@ -76,12 +76,8 @@ public class HomeActivity extends AppCompatActivity {
                 Intent i = new Intent(HomeActivity.this, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //startActivity(new Intent(HomeActivity.this, MainActivity.class));
-                //this.finish();
                 break;
         }
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         return true;
     }
 

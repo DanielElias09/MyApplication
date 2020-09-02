@@ -37,7 +37,6 @@ public class MyAccountFragment extends Fragment {
     public MyAccountFragment() {
     }
 
-    // TODO: Rename and change types and number of parameters
     public static MyAccountFragment newInstance(String username) {
         MyAccountFragment fragment = new MyAccountFragment();
         Bundle args = new Bundle();

@@ -130,26 +130,6 @@ public class AddRecipeFragment extends Fragment implements View.OnClickListener 
         newRecipe.setId(res);
         firebaseManager.setRecipe(newRecipe);
 
-        /*android.os.StrictMode.ThreadPolicy policy = new android.os.StrictMode.ThreadPolicy.Builder().permitAll().build();
-        android.os.StrictMode.setThreadPolicy(policy);
-
-        try {
-            URL url = new URL(newRecipe.getImagePath());
-            bitmapImage = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch(IOException e) {
-            System.out.println(e);
-        }
-
-        FirebaseManager.uploadImage(bitmapImage,"recipe"+newRecipe.getId(), new FirebaseManager.Listener() {
-            @Override
-            public void onSuccess(String url) {
-            }
-
-            @Override
-            public void onFail() {
-
-            }
-        });*/
 
         FirebaseManager.uploadImage(newRecipe.getImagePath(),"recipe"+newRecipe.getId(), new FirebaseManager.Listener() {
             @Override

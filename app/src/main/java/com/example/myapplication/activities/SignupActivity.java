@@ -35,7 +35,6 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseAdapter = DatabaseAdapter.getInstance(this);
         databaseAdapter = DatabaseAdapter.getInstance(this);

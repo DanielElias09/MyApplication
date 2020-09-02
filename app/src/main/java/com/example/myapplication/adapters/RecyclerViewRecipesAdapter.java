@@ -29,7 +29,6 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
     Context mContext;
     List<String> mImages = new ArrayList<>();
     List<String> mImageNames = new ArrayList<>();
-    //List<String> mCreators = new ArrayList<>();
     List<Long> mIds = new ArrayList<>();
     HomeActivity ha;
 
@@ -65,7 +64,6 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
                 .load(mImages.get(position))
                 .into(holder.image);
         holder.name.setText(mImageNames.get(position));
-        //holder.creator.setText(mCreators.get(position));
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +89,6 @@ public class RecyclerViewRecipesAdapter extends RecyclerView.Adapter<RecyclerVie
             super(itemView);
             image = itemView.findViewById(R.id.item_recipe_image);
             name = itemView.findViewById(R.id.item_recipe_text);
-            //creator = itemView.findViewById(R.id.item_recipe_creator);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
