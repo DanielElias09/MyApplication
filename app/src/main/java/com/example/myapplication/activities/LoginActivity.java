@@ -47,8 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 intent.putExtra("username",username.getText().toString());
                 startActivity(intent);
-                username.setText("");
-                password.setText("");
             }
         });
         signup_btn.setOnClickListener(new View.OnClickListener() {
