@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SignupActivity">
-
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"></include>
     <TextView
         android:id="@+id/signup_newaccount"
         android:layout_width="wrap_content"
@@ -111,8 +112,8 @@
 
     <Button
         android:id="@+id/signup_login"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_width="71dp"
+        android:layout_height="22dp"
         android:layout_marginTop="10dp"
         android:background="#F6EB8D"
         android:fontFamily="sans-serif-black"
