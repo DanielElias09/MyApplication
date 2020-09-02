@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.DB.DBManager;
+import com.example.myapplication.DB.FirebaseManager;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.User;
@@ -25,8 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button save_btn;
     private Button login_btn;
     private DatabaseAdapter databaseAdapter;
-    private FirebaseDatabase database;
-    private DatabaseReference reff;
+    private FirebaseManager firebaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
 
         databaseAdapter = DatabaseAdapter.getInstance(this);
         databaseAdapter = DatabaseAdapter.getInstance(this);
-        database = FirebaseDatabase.getInstance();
+        firebaseManager = FirebaseManager.getInstance();
 
         save_btn=findViewById(R.id.signup_button);
         login_btn=findViewById(R.id.signup_login);
@@ -73,8 +73,8 @@ public class SignupActivity extends AppCompatActivity {
         User newUser = new User(_username, _fullname, _email, _password);
         String res = databaseAdapter.addNewUser(newUser);
         Toast.makeText(this, res, Toast.LENGTH_LONG).show();
-        reff = database.getReference("users/user"+newUser.getUsername());
-        reff.setValue(newUser);
+        firebaseManager.setUser(newUser);
+
 
     }
 }

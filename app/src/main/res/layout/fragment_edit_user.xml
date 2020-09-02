@@ -66,7 +66,7 @@
             android:hint="Username"
             android:inputType="textPersonName"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/edit_recipe_category"
+            app:layout_constraintBottom_toTopOf="@+id/add_recipe_category"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toStartOf="parent"

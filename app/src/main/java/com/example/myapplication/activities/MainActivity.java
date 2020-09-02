@@ -2,14 +2,19 @@ package com.example.myapplication.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.DB.DBManager;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn_login = findViewById(R.id.main_login_button);
         btn_signup = findViewById(R.id.main_signup_button);
-
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,12 +11,10 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.DB.FirebaseManager;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.Recipe;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,9 +26,8 @@ public class EditRecipeFragment extends Fragment {
 
     private Long id_recipe;
     private View rootView;
-    DatabaseAdapter databaseAdapter;
-    private FirebaseDatabase database;
-    private DatabaseReference reff;
+    private DatabaseAdapter databaseAdapter;
+    private FirebaseManager firebaseManager;
     private EditText recipe_name;
     private Spinner recipe_category;
     private EditText recipe_ingredients;
@@ -59,15 +56,15 @@ public class EditRecipeFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_edit_recipe, container, false);
         id_recipe = getArguments().getLong("id");
         databaseAdapter = DatabaseAdapter.getInstance(getContext());
-        database = FirebaseDatabase.getInstance();
+        firebaseManager = FirebaseManager.getInstance();
         Recipe recipe = databaseAdapter.getRecipeById(id_recipe);
 
-        recipe_image = rootView.findViewById(R.id.edit_recipe_imagepath);
-        recipe_name = rootView.findViewById(R.id.edit_recipe_name);
-        recipe_ingredients = rootView.findViewById((R.id.edit_recipe_ingredients));
-        recipe_method = rootView.findViewById(R.id.edit_recipe_recipe);
-        recipe_category = rootView.findViewById(R.id.edit_recipe_category);
-        save_btn = rootView.findViewById(R.id.edit_recipe_btn);
+        recipe_image = rootView.findViewById(R.id.add_recipe_imagepath);
+        recipe_name = rootView.findViewById(R.id.add_recipe_name);
+        recipe_ingredients = rootView.findViewById((R.id.add_recipe_ingredients));
+        recipe_method = rootView.findViewById(R.id.add_recipe_recipe);
+        recipe_category = rootView.findViewById(R.id.add_recipe_category);
+        save_btn = rootView.findViewById(R.id.add_recipe_btn);
 
         recipe_image.setText(recipe.getImagePath());
         recipe_category.setSelection(getSpinnerSelection(recipe.getCategory()));
@@ -89,8 +86,18 @@ public class EditRecipeFragment extends Fragment {
             databaseAdapter.updateRecipe(recipe);
             Toast.makeText(getActivity(), "Recipe updated", Toast.LENGTH_LONG).show();
 
-            reff = database.getReference("recipes/recipe"+recipe.getId());
-            reff.setValue(recipe);
+            firebaseManager.setRecipe(recipe);
+
+            FirebaseManager.uploadImage(recipe.getImagePath(),"recipe"+recipe.getId(), new FirebaseManager.Listener() {
+                @Override
+                public void onSuccess(String url) {
+                }
+
+                @Override
+                public void onFail() {
+
+                }
+            });
 
         });
 

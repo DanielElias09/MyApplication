@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.DB.FirebaseManager;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.DatabaseAdapter;
 import com.example.myapplication.models.User;
@@ -24,11 +25,10 @@ public class EditUserFragment extends Fragment {
     private String username;
     private View rootView;
     private DatabaseAdapter databaseAdapter;
+    private FirebaseManager firebaseManager;
 
     private Button save_details_btn;
     private Button save_password_btn;
-    private FirebaseDatabase database;
-    private DatabaseReference reff;
 
     private EditText new_password;
     private EditText new_username;
@@ -57,7 +57,7 @@ public class EditUserFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_edit_user, container, false);
         username = getArguments().getString("username");
         databaseAdapter = DatabaseAdapter.getInstance(getContext());
-        database = FirebaseDatabase.getInstance();
+        firebaseManager = FirebaseManager.getInstance();
 
         User user = databaseAdapter.getUserByUsername(username);
 
@@ -83,8 +83,7 @@ public class EditUserFragment extends Fragment {
             Toast.makeText(getActivity(), res, Toast.LENGTH_LONG).show();
             new_password.setText("");
 
-            reff = database.getReference("users/user"+user.getUsername());
-            reff.setValue(user);
+            firebaseManager.setUser(user);
         });
 
         save_details_btn.setOnClickListener(view -> {
@@ -98,8 +97,8 @@ public class EditUserFragment extends Fragment {
             new_fullname.setText(user2.getFullname());
             new_email.setText(user2.getEmail());
 
-            reff = database.getReference("users/user"+user.getUsername());
-            reff.setValue(user);
+            firebaseManager.setUser(user);
+
         });
 
         return rootView;
