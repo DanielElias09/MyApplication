@@ -72,10 +72,21 @@ public class SignupActivity extends AppCompatActivity {
         String _email = email.getText().toString();
         String _password = password.getText().toString();
 
+        if(_username.equals("") || _fullname.equals("") || _email.equals("") || _password.equals(""))
+        {
+            Toast.makeText(this, "Missing details", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         User newUser = new User(_username, _fullname, _email, _password);
         String res = databaseAdapter.addNewUser(newUser);
         Toast.makeText(this, res, Toast.LENGTH_LONG).show();
         firebaseManager.setUser(newUser);
+
+        username.setText("");
+        fullname.setText("");
+        email.setText("");
+        password.setText("");
 
 
     }
